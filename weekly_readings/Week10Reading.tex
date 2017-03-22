@@ -1,0 +1,21 @@
+\documentclass[12pt]{article}
+
+\input{preamble}
+
+\begin{document}
+
+\begin{center}
+  \textbf{Week 10 Readings} \\
+  C. Hidey \\
+  \today
+\end{center}
+
+\paragraph{{\bf [P1] Greene, Stephan and Philip Resnik. 2009.}}
+\text{} \\
+Greene and Resnik model sentiment using syntactic properties.  They justify their intuition that syntax is relevant by describing linguistic properties of verb alternations.  They obtained news stories involving death and had participants rate the stories for how likely the subject was to be involved or cause the event.  In addition, they used syntactic features to predict points of view in the Israeli-Palestinian conflict.  I liked that they were able to use syntactic features to prove their hypothesis, even though it is somewhat counterintuitive that there would be sentiment structure present beyond the word level.  However, in the example they gave, it is not clear that the syntax is driving the difference rather than just the lexical choice.  Furthermore, it is not clear whether this approach would extend to verbs that do not evoke such strong emotion.
+
+\paragraph{{\bf [P2] Abu-Jbara, Amjad, Pradeep Dasigi, Mona Diab, and Dragomir Radev. 2012.}}
+\text{} \\
+Abu-Jbara et al. looked at clustering of groups of people with the same ideological beliefs.  They analyzed data from Politicalforum, Createdebate, and Wikipedia.  They used a pipeline approach to create profiles of individual users and cluster them.  The pipeline consists of parsing threads (explicit in XML), identifying opinions using OpinionFinder, identifying targets using NER, NP chunking, and anaphora resolution, pairing opinions and targets from the dependency parse, and finally creating user profiles by using the opinion-target pairs to derive interaction features.  I liked that this approach used the full NLP pipeline of tools and succeeded in spite of all the errors inherent.  However, it was not clear that the baselines were the appropriate baselines for clustering groups since they only used unsupervised metrics.
+
+\end{document}

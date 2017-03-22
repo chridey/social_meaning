@@ -1,0 +1,543 @@
+\documentclass{beamer}
+%whale
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\usepackage{graphicx}
+
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+\setbeamercovered{invisible}
+
+\title{Discourse and Sentiment Analysis}
+\author{Chris Hidey}
+\institute{Columbia University}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%What to cover: what is your topic, how you approached it and why, what problems you ran into, and what your results are.
+
+\begin{frame}{Overview}
+\begin{enumerate}
+\item Background
+\item Methodology
+\item Corpora
+\item Results
+\end{enumerate}
+\end{frame}
+
+%discourse - what makes a text coherent, transitions between clauses and sentences
+
+\begin{frame}{Background}
+\begin{block}{Discourse}
+\begin{itemize}
+\item Comparison/Contrast (but, in contrast)
+\item Explanation/Expansion (also, furthermore)
+\item Reason/Result (because)
+\item Temporal (then, after)
+\end{itemize}
+\end{block}
+
+\pause
+
+\textbf{Goal:} research possible improvements in sentiment analysis using discourse
+
+\end{frame}
+
+\begin{frame}{Background}
+
+\begin{block}{Related Work}
+\begin{itemize}
+\item Sentiment Analysis in Twitter with Lightweight Discourse Analysis (Mukherjee and Bhattacharyya, 2012)
+%\item Multi-level Structured Models for Document-level Sentiment Classification (Yessenalina et al., 2010)
+\item Discourse Connectors for Latent Subjectivity in Sentiment Analysis (Trivedi and Eisenstein, 2013)
+%\item Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank (Socher et al., 2013)
+\end{itemize}
+\end{block}
+
+%1 from linguistic perspective (enhance, decrease, flip)
+\pause
+
+\begin{block}{Areas of Improvement}
+\begin{enumerate}
+\item Within sentence discourse relations
+\item Implicit relations across sentences
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{Methodology: Part 1}
+\begin{block}{Sentiment140 (Go et al., 2009)}
+Sentences weakly marked with polarity
+\begin{itemize}
+\item 1,600,000 Tweets
+\item ~33\% have discourse marker
+\item for each discourse marker
+\begin{enumerate}
+\item Balance positive and negative classes
+\item Train/tune/test linear SVM model with cross-validation
+\item If word pair features outperform unigram features, indicates that long-term context is important
+\end{enumerate}
+\item Try to detect which connectives most influence sentiment (top K according to p-value)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Methodology: Part 2}
+%use to inform document polarity as pipeline
+
+\begin{block}{IMDB (Maas et al., 2011)}
+Documents marked with polarity \\
+50,000 movie reviews (balanced) \\
+%Train model using discourse features \\
+Latent structured SVM (Yessenalina et al., 2010)
+%$$\hat{w} = arg \max_w \sum_t \max_h w^T f(y_t, x_t, h)$$
+\begin{enumerate}
+\item Identify subjective sentences with subjectivity features %($f_{subj}(x,h)$)
+\item Identify polarity of subjective sentences with polarity features % ($f_{pol}(y,x,h)$)
+\item Iterate
+\end{enumerate}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{IMDB Results}
+\begin{block}{Features}
+\textbf{Subjectivity:} \\
+Explicit discourse markers (Trivedi, 2013) \\
+Implicit discourse features \\
+Subjective vs objective score \\
+\textbf{Polarity:} \\
+Sentiment discourse models \\
+Top K sentiment discourse models \\
+\end{block}
+
+\vspace{3cm}
+\end{frame}
+
+\begin{frame}{IMDB Results}
+\begin{block}{Features}
+\textbf{Subjectivity:} \\
+\textit{Explicit discourse markers (Trivedi, 2013)} \\
+\textit{Implicit discourse features} \\
+Subjective vs objective score \\
+\textbf{Polarity:} \\
+Sentiment discourse models \\
+\textit{Top K sentiment discourse models} \\
+\end{block}
+
+\begin{tabular}{|l|l|}
+\hline
+Model & Accuracy \\
+\hline
+baselines: & \\
+\hline
+unigrams (Yessenalina, 2010): & 88.16 \\
+\hline
+markers (Trivedi, 2013): & 88.48 \\
+%unigrams $+$ structural: & 88.44 \\
+\hline
+\multicolumn{2}{|l|}{\text{}}\\
+\hline
+unigrams $+$ best features: & 89.04 \\
+\hline
+
+%Subjectivity: \\
+%implicit word pair features \\
+%subjective vs objective discourse models \\
+
+%Polarity: \\
+%sentiment/discourse models: & 88.75 \\
+%top k sentiment/discourse models: & 89.04 \\
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Problems}
+\begin{block}{Reproducibility}
+Unclear parameters, data and code not available
+%\begin{itemize}
+%\item Hidden variable initialization?
+%\item Data and code not available
+%\item What if no subjective sentences?
+%\end{itemize}
+\end{block}
+
+\begin{block}{Twitter data}
+Better test set
+\end{block}
+
+\begin{block}{Data Sparsity}
+Clustering discourse connectives according to contexts
+\end{block}
+
+%\begin{block}{Data Sparsity}
+%\begin{itemize}
+%\item Clustering
+%  addDiscourse
+%\item Word Embeddings
+%\end{itemize}
+%\end{block}
+
+\end{frame}
+
+\end{document}
+
+
+\begin{frame}{Twitter Results}
+\begin{tabular}{|l|l|l|} %l|}
+\hline
+Connective & Unigram &  Word Pair \\
+\hline
+then &  0.587& 0.645 \\%& 5.0182080713057076e-14 \\
+\hline
+when &  0.608& 0.658 \\%&3.6759484345338933e-13\\
+\hline
+or &  0.652& 0.685 \\%&9.1063896047183235e-06\\
+\hline
+but &  0.63& 0.658 \\%&1.8209544824676627e-05\\
+\hline
+as &  0.636& 0.664 \\%&8.0760120464984375e-05\\
+\hline
+still &  0.604& 0.632 \\%&0.00024320958714751928\\
+\hline
+yet &  0.56& 0.602 \\%&0.00054762779687567154\\
+\hline
+now &  0.651& 0.669 \\%&0.0037496395048653985\\
+\hline
+next &  0.605& 0.625 \\%&0.0093613750374331728\\
+\hline
+\end{tabular}
+\end{frame}
+
+%70.1
+%70.7
+
+
+
+Related work
+1)lightweight twitter
+2)latent SVM using discourse markers
+3)sentiment using recurrent neural nets
+much slower on same data
+requires parsing and hand-labeled data
+domain-specific
+
+Data
+Sentiment140
+IMDB corpus (maas et al)
+
+Part 1 Results (1-2 slides)
+Lightweight modeling of discourse
+Compare unigrams vs word pairs, ordered by improvement in p-value
+
+Part 2
+
+
+\begin{frame}{Overview}
+\begin{enumerate}
+\item Background
+\item Corpus
+\item Methodology
+\item Results
+\item Critique
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Background}
+\begin{block}{Cognitive State}
+\begin{itemize}
+\item \textbf{Belief }
+\item Desire
+\item Intention
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Examples}
+\begin{itemize}
+\item Desire and $\neg$ Belief
+\begin{quote}
+I know John won't be here but I wouldn't mind if he were
+\end{quote}
+\pause
+\item Belief and $\neg$ Belief
+\begin{quote}
+\#John won't be here but nevertheless I think he may be here.
+\end{quote}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Corpus}
+
+10,000 tokens annotated for belief
+
+\begin{block}{Verbal Propositions}
+\begin{itemize}
+\item Verb
+\begin{quote}
+Republican leader Bill Frist \textbf{said} the Senate was \textbf{hijacked}.
+\end{quote}
+
+\pause
+
+\item Nominal/Adjectival/Prepositional predicate
+\begin{quote}
+Republican leader Bill Frist \textbf{said} the Senate was \textbf{useless}.
+\end{quote}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Corpus}
+\begin{block}{Belief Tags}
+\begin{itemize}
+\item Committed belief (CB)
+\begin{quote}
+GM has laid off workers.
+\end{quote}
+
+\pause
+
+\item Non-committed belief (NCB)
+\begin{quote}
+GM may lay off workers.
+\end{quote}
+
+\pause
+
+\item Not applicable (NA)
+\begin{quote}
+Some wish GM would lay off workers.
+\end{quote}
+
+\pause
+
+\item Other (O)
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Subtasks}
+\begin{itemize}
+\item Identifying propositions (binary classification)
+\item Tagging propositions (3-way classification)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Methodology}
+\begin{block}{Inference}
+\begin{itemize}
+\item Joint Inference
+\begin{itemize}
+\item Support Vector Machine (SVM) Chunker
+\item Conditional Random Field (CRF)
+\end{itemize}
+\item Pipeline
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Feature Engineering}
+\begin{itemize}
+\item Lexical
+\item Syntactic
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Lexical Features}
+Derived without parsing
+\begin{block}{Informative}
+\begin{itemize}
+\item numeric
+\item POS
+\item regular/modal/auxiliary
+\end{itemize}
+\end{block}
+\begin{block}{Uninformative}
+\begin{itemize}
+\item lemma
+\item stem
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Syntactic Features}
+Derived from dependency parse
+\begin{block}{Informative}
+\begin{itemize}
+\item infinitive form
+\item reporting ancestor
+\item parent POS
+\item child
+\begin{itemize}
+\item perfect tense
+\item wh-word
+\item auxilary/modal
+\end{itemize}
+\end{itemize}
+\end{block}
+\begin{block}{Uninformative}
+\begin{itemize}
+\item parent lemma/stem
+\item supertags
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Experiments}
+\begin{tabular}{|ll|l|l|}
+\hline
+\multicolumn{4}{|l|}{\textbf{SVM}} \\
+\hline
+Kernel:& quadratic & \textit{Features} & \textit{F1-score}\\
+\cline{3-4}
+Slack:& $c=0.5$ & Lexical & 56.9\\
+Context Width:& 2 & Lexical and Syntactic & \textbf{64.0}\\
+\hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Experiments}
+\begin{tabular}{|ll|l|l|}
+\hline
+\multicolumn{4}{|l|}{\textbf{SVM}} \\
+\hline
+Kernel:& quadratic & \textit{Features} & \textit{F1-score}\\
+\cline{3-4}
+Slack:& $c=0.5$ & Lexical & 56.9\\
+Context Width:& 2 & Lexical and Syntactic & \textbf{64.0}\\
+\hline
+
+%\uncover<+-> {
+\multicolumn{4}{l}{\text{}}  \\
+\hline 
+\multicolumn{4}{|l|}{\textbf{CRF}} \\
+\hline 
+Order:& 1 & \textit{Features} & \textit{F1-score} \\
+\cline{3-4} 
+Gaussian Variance:& 1 & Lexical & 49.6 \\
+& & Lexical and Syntactic & 59.0 \\
+\hline 
+%}
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Experiments}
+\begin{tabular}{|ll|l|l|}
+\hline
+\multicolumn{4}{|l|}{\textbf{SVM}} \\
+\hline
+Kernel:& quadratic & \textit{Features} & \textit{F1-score}\\
+\cline{3-4}
+Slack:& $c=0.5$ & Lexical & 56.9\\
+Context Width:& 2 & Lexical and Syntactic & \textbf{64.0}\\
+\hline
+
+%\uncover<+-> {
+\multicolumn{4}{l}{\text{}}  \\
+\hline 
+\multicolumn{4}{|l|}{\textbf{CRF}} \\
+\hline 
+Order:& 1 & \textit{Features} & \textit{F1-score} \\
+\cline{3-4} 
+Gaussian Variance:& 1 & Lexical & 49.6 \\
+& & Lexical and Syntactic & 59.0 \\
+\hline 
+%}
+
+\multicolumn{4}{l}{\text{}} \\
+\hline
+\multicolumn{4}{|l|}{\textbf{Pipeline}} \\
+\hline
+SVM binary tagger & & \textit{Features} & \textit{F1-score}\\
+\cline{3-4}
+Context Width:& 2 & Lexical and Syntactic & 46.1\\
+\cline{3-4}
+\multicolumn{2}{|l}{SVM 3-way classifier} & \multicolumn{2}{l|}{\text{}} \\
+\multicolumn{2}{|l}{trained on gold data} & \multicolumn{2}{l|}{\text{}} \\
+\hline
+
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Critique}
+\begin{itemize}
+\item Clarity?
+\begin{itemize}
+\item Well-written and understandable
+\item More explanation of features and parameters
+%discussion of dataset (unbalanced)
+\item Confusion matrix or error analysis
+\end{itemize}
+
+\pause
+
+\item Methodology/Evaluation?
+\begin{itemize}
+\item Additional baselines
+%lemma/stem baseline
+\item Training/testing
+\item Statistical significance
+\end{itemize}
+%Impact?
+
+\pause
+\item Originality?
+
+\pause
+
+\item Reproducibility?
+\begin{itemize}
+\item Depends on code and data availability
+\item Parameter tuning
+\item Training/evaluation/testing
+\end{itemize}
+
+\pause
+\item Impact?
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Critique}
+\begin{itemize}
+\item Positives?
+\begin{itemize}
+\item Well-defined problem, high IAA
+\item Not too domain-specific
+\item Comparison of pipeline versus joint inference
+\end{itemize}
+
+\pause
+
+\item Negatives?
+\begin{itemize}
+\item Requires dependency parsing
+\item Language-specific
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+
+\input{preamble}
+
+\begin{document}
+
+\begin{center}
+  \textbf{Week 14 Readings} \\
+  C. Hidey \\
+  \today
+\end{center}
+
+
+\paragraph{{\bf [PIP2]Daniel Jurafsky, Rajesh Ranganath, Daniel A. McFarland (2009) }}
+\text{} \\
+Jurafsky et al. attempt to identify aspects of personality
+in the context of speed dating.  They used a speed dating corpus created in 2005 and
+segmented acoustic information and transcribed speech with marked turns.  They used a 
+number of prosodic features for amplitude and pitch such as the range and standard
+deviation.  They added lexical features based on the LIWC categories and added 2 
+additional features for story-telling and content about the date itself.  They also
+included dialog features and disfluency features such as questions, discourse, or pauses.
+They trained a logistic regression classifier and found that they were able to do 
+better than random chance.
+I thought this paper was very interesting and I was surprised they were able to obtain
+fairly high F-score using only speech and linguistic features.  I would expect that
+they could obtain better performance by including other social cues like facial 
+expressions, gestures, or physical contact.
+One negative about the paper was the assumption that the reader is familiar with acoustic
+and prosodic features and that could have benefited from some explanation.
+Also, it would have been interesting to compare human performance on this task.
+
+\paragraph{{\bf [PIP3] Andrew Rosenberg and Julia Hirschberg. (2008)}}
+\text{} \\
+Rosenberg and Hirschberg examine charisma in speech.  They created a corpus by annotating
+public speeches from 9 Democratic Presidential candidates with adjectives such as accusatory,
+passionate, intense or trustworthy, reasonable, believable.  They extracted features and
+modeled correlation with various attributes of charisma.  This experiment was repeated
+using different subjects using text only.  
+They found that there was some consistency in which speakers were rated highly for charisma.
+For both experiments, they used lexico-syntactic features such as number of words, content words,
+repeated words, and number of pronouns.  
+This paper was very detailed, and the experiment should be reproducible.  One way that I think the
+paper could have been improved would be to discretize the human judgments and attempt to build
+a predictive model to classify the charisma of a subject.
+\end{document}
+
+\paragraph{{\bf [D1] Ott, Myle, Yejin Choi, Claire Cardie, and Jeffrey T. Hancock. 2011.}}
+\text{} \\
+Ott et al. attempt to detect deceptive opinions in reviews.  Because deceptive opinions are
+difficult to identify, they created a dataset using Mechanical Turk and had humans generate
+fake positive reviews.  They then balanced the data by sampling true reviews from TripAdvisor
+according to a log-normal distribution on document length.  They evaluated human performance
+and found that humans are not very good at distinguishing truthful from deceptive reviews.
+They then train a machine learning classifier and find that an SVM trained with bigram features
+and a deception detection toolkit (LIWC) performs much better than humans.
+I liked that the paper attempts to address a novel topic and the generation of the dataset is an
+interesting problem.
+One issue I had with the paper is that even though it is difficult to determine truthful
+reviews, the authors used 5-star reviews as gold standard truthful data.
+Furthermore, they only considered n-gram features when other features might be useful as well.
+
+\paragraph{{\bf [D2] Tommaso Fornaciari and Massimo Poesio. 2012.}}
+\text{} \\
+Fornaciari and Poesio study deception and take advantage of similarity between liars.  
+For their data set, they used court proceedings, only including individuals that
+were found guilty.  They had annotators determine whether the statements issued by
+the defendants were true or false.
+They used machine learning techniques and created a feature vector from n-grams for lemmas
+and POS as well as from the LIWC.  
+They clustered subjects according to metadata and mixed results.
+They removed outliers from by clustering them according to their bag-of-words vectors
+and removing the most distant subjects; this improved performance.
+They repeated their experiment using only male subjects and found that it did not help
+performance.
+I liked that this paper uses a different standard of true and false, a scenario where
+people would have real motivation to lie, although there is some question over
+whether it is actual truth versus just being convicted.
+I didn't like the experiment removing outliers, it seems that approach would help
+any NLP task where n-grams are a feature.
+\end{document}

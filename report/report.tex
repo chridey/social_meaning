@@ -1,0 +1,323 @@
+\documentclass{beamer}
+%whale
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\usepackage{graphicx}
+
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+\setbeamercovered{invisible}
+
+\title{Automatic Committed Belief Tagging}
+\author{presented by Chris Hidey}
+\institute{Columbia University}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Overview}
+\begin{enumerate}
+\item Background
+\item Corpus
+\item Methodology
+\item Results
+\item Critique
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Background}
+\begin{block}{Cognitive State}
+\begin{itemize}
+\item \textbf{Belief }
+\item Desire
+\item Intention
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Examples}
+\begin{itemize}
+\item Desire and $\neg$ Belief
+\begin{quote}
+I know John won't be here but I wouldn't mind if he were
+\end{quote}
+\pause
+\item Belief and $\neg$ Belief
+\begin{quote}
+\#John won't be here but nevertheless I think he may be here.
+\end{quote}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Corpus}
+
+10,000 tokens annotated for belief
+
+\begin{block}{Verbal Propositions}
+\begin{itemize}
+\item Verb
+\begin{quote}
+Republican leader Bill Frist \textbf{said} the Senate was \textbf{hijacked}.
+\end{quote}
+
+\pause
+
+\item Nominal/Adjectival/Prepositional predicate
+\begin{quote}
+Republican leader Bill Frist \textbf{said} the Senate was \textbf{useless}.
+\end{quote}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Corpus}
+\begin{block}{Belief Tags}
+\begin{itemize}
+\item Committed belief (CB)
+\begin{quote}
+GM has laid off workers.
+\end{quote}
+
+\pause
+
+\item Non-committed belief (NCB)
+\begin{quote}
+GM may lay off workers.
+\end{quote}
+
+\pause
+
+\item Not applicable (NA)
+\begin{quote}
+Some wish GM would lay off workers.
+\end{quote}
+
+\pause
+
+\item Other (O)
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Subtasks}
+\begin{itemize}
+\item Identifying propositions (binary classification)
+\item Tagging propositions (3-way classification)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Methodology}
+\begin{block}{Inference}
+\begin{itemize}
+\item Joint Inference
+\begin{itemize}
+\item Support Vector Machine (SVM) Chunker
+\item Conditional Random Field (CRF)
+\end{itemize}
+\item Pipeline
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Feature Engineering}
+\begin{itemize}
+\item Lexical
+\item Syntactic
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Lexical Features}
+Derived without parsing
+\begin{block}{Informative}
+\begin{itemize}
+\item numeric
+\item POS
+\item regular/modal/auxiliary
+\end{itemize}
+\end{block}
+\begin{block}{Uninformative}
+\begin{itemize}
+\item lemma
+\item stem
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Syntactic Features}
+Derived from dependency parse
+\begin{block}{Informative}
+\begin{itemize}
+\item infinitive form
+\item reporting ancestor
+\item parent POS
+\item child
+\begin{itemize}
+\item perfect tense
+\item wh-word
+\item auxilary/modal
+\end{itemize}
+\end{itemize}
+\end{block}
+\begin{block}{Uninformative}
+\begin{itemize}
+\item parent lemma/stem
+\item supertags
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Experiments}
+\begin{tabular}{|ll|l|l|}
+\hline
+\multicolumn{4}{|l|}{\textbf{SVM}} \\
+\hline
+Kernel:& quadratic & \textit{Features} & \textit{F1-score}\\
+\cline{3-4}
+Slack:& $c=0.5$ & Lexical & 56.9\\
+Context Width:& 2 & Lexical and Syntactic & \textbf{64.0}\\
+\hline
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Experiments}
+\begin{tabular}{|ll|l|l|}
+\hline
+\multicolumn{4}{|l|}{\textbf{SVM}} \\
+\hline
+Kernel:& quadratic & \textit{Features} & \textit{F1-score}\\
+\cline{3-4}
+Slack:& $c=0.5$ & Lexical & 56.9\\
+Context Width:& 2 & Lexical and Syntactic & \textbf{64.0}\\
+\hline
+
+%\uncover<+-> {
+\multicolumn{4}{l}{\text{}}  \\
+\hline 
+\multicolumn{4}{|l|}{\textbf{CRF}} \\
+\hline 
+Order:& 1 & \textit{Features} & \textit{F1-score} \\
+\cline{3-4} 
+Gaussian Variance:& 1 & Lexical & 49.6 \\
+& & Lexical and Syntactic & 59.0 \\
+\hline 
+%}
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Experiments}
+\begin{tabular}{|ll|l|l|}
+\hline
+\multicolumn{4}{|l|}{\textbf{SVM}} \\
+\hline
+Kernel:& quadratic & \textit{Features} & \textit{F1-score}\\
+\cline{3-4}
+Slack:& $c=0.5$ & Lexical & 56.9\\
+Context Width:& 2 & Lexical and Syntactic & \textbf{64.0}\\
+\hline
+
+%\uncover<+-> {
+\multicolumn{4}{l}{\text{}}  \\
+\hline 
+\multicolumn{4}{|l|}{\textbf{CRF}} \\
+\hline 
+Order:& 1 & \textit{Features} & \textit{F1-score} \\
+\cline{3-4} 
+Gaussian Variance:& 1 & Lexical & 49.6 \\
+& & Lexical and Syntactic & 59.0 \\
+\hline 
+%}
+
+\multicolumn{4}{l}{\text{}} \\
+\hline
+\multicolumn{4}{|l|}{\textbf{Pipeline}} \\
+\hline
+SVM binary tagger & & \textit{Features} & \textit{F1-score}\\
+\cline{3-4}
+Context Width:& 2 & Lexical and Syntactic & 46.1\\
+\cline{3-4}
+\multicolumn{2}{|l}{SVM 3-way classifier} & \multicolumn{2}{l|}{\text{}} \\
+\multicolumn{2}{|l}{trained on gold data} & \multicolumn{2}{l|}{\text{}} \\
+\hline
+
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Critique}
+\begin{itemize}
+\item Clarity?
+\begin{itemize}
+\item Well-written and understandable
+\item More explanation of features and parameters
+%discussion of dataset (unbalanced)
+\item Confusion matrix or error analysis
+\end{itemize}
+
+\pause
+
+\item Methodology/Evaluation?
+\begin{itemize}
+\item Additional baselines
+%lemma/stem baseline
+\item Training/testing
+\item Statistical significance
+\end{itemize}
+%Impact?
+
+\pause
+\item Originality?
+
+\pause
+
+\item Reproducibility?
+\begin{itemize}
+\item Depends on code and data availability
+\item Parameter tuning
+\item Training/evaluation/testing
+\end{itemize}
+
+\pause
+\item Impact?
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Critique}
+\begin{itemize}
+\item Positives?
+\begin{itemize}
+\item Well-defined problem, high IAA
+\item Not too domain-specific
+\item Comparison of pipeline versus joint inference
+\end{itemize}
+
+\pause
+
+\item Negatives?
+\begin{itemize}
+\item Requires dependency parsing
+\item Language-specific
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\end{document}

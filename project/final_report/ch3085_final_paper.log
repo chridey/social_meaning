@@ -1,0 +1,169 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  8 MAY 2015 14:11
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**ch3085_final_paper
+(./ch3085_final_paper.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(./naaclhlt2015.sty
+Conference Style for NAACL-HLT 2012 -- released August 30, 2011
+\titlebox=\skip43
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count87
+\c@@ppsavesec=\count88
+\c@@ppsaveapp=\count89
+)
+(./ch3085_final_paper.aux)
+\openout1 = `ch3085_final_paper.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 24.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 25.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 25.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 25.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 25.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 25.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 25.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 25.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \vbox (badness 3989) has occurred while \output is active []
+
+ [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+
+
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 92.
+
+Underfull \hbox (badness 1558) in paragraph at lines 96--101
+[]\OT1/ptm/m/n/10.95 Other re-searchers fur-thered this work by in-
+ []
+
+[2]
+Underfull \hbox (badness 1264) in paragraph at lines 174--179
+[]\OT1/ptm/m/n/10.95 Using the data set ex-tracted from the Sen-ti-
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 199--204
+[]\OT1/ptm/m/n/10.95 As ad-di-tional fea-tures, sev-eral discourse-
+ []
+
+
+Underfull \hbox (badness 1430) in paragraph at lines 199--204
+\OT1/ptm/m/n/10.95 be-cause some dis-course con-nec-tives oc-cur very
+ []
+
+[4] [5]
+Underfull \hbox (badness 3158) in paragraph at lines 327--330
+\OT1/ptm/m/n/10.95 could be ap-plied to other lan-guages and do-
+ []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 331.
+[6]
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no “ in font ptmr7t!
+
+Underfull \hbox (badness 4132) in paragraph at lines 445--449
+[]\OT1/ptm/m/n/10 Subhabrata Mukher-jee and Push-pak Bhat-tacharyya.
+ []
+
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no “ in font ptmr7t!
+
+Underfull \hbox (badness 1418) in paragraph at lines 495--499
+[]\OT1/ptm/m/n/10 Theresa Wil-son, Paul Hoff-mann, Swapna So-ma-sun-
+ []
+
+[7]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 516.
+
+
+LaTeX Warning: Float too large for page by 61.87465pt on input line 623.
+
+[8] (./ch3085_final_paper.aux) ) 
+Here is how much of TeX's memory you used:
+ 497 strings out of 493117
+ 6586 string characters out of 6135433
+ 68746 words of memory out of 5000000
+ 3999 multiletter control sequences out of 15000+600000
+ 23872 words of font info for 52 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 22i,9n,19p,605b,258s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/d
+vips/base/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
+fb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ch3085_final_paper.pdf (8 pages, 123915 bytes).
+PDF statistics:
+ 64 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

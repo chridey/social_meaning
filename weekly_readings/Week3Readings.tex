@@ -1,0 +1,25 @@
+\documentclass[12pt]{article}
+
+\input{preamble}
+
+\begin{document}
+
+\begin{center}
+  \textbf{Week 3 Readings} \\
+  C. Hidey \\
+  \today
+\end{center}
+
+\paragraph{{\bf SL1 (Hatzivassiloglou and McKeown, 1997):} } 
+\text{} \\
+Hatzivassiloglou and McKeown created a classifier that takes advantage of the linguistic intuition that adjectives that are conjoined with \textit{and} have similar sentiment and adjectives conjoined with \textit{but} have opposite sentiment. The authors created an initial set of adjectives manually annotated with positive or negative polarity from the Wall Street Journal Corpus.  They used annotated pairs to train and test two classifiers: a logistic regression classifier and a rule-based classifier.  Then they used the classifier to cluster the adjectives into one of two classes.  Because these clusters have no sense of positive or negative, they assigned the positive class to the one with the highest average frequency. One thing I liked was that the used a linguistic property and empirically verified it. One thing I didn't like about the paper was the use of a part-of-speech tagger on the Wall Street Journal, instead of gold standard tags.  As a result there will be some adjectives that are missed and some constructions of adjective-conjunction-adjective that may be a different linguistic construction (for example conjoined phrases).
+
+\paragraph{{\bf [SL2] (Velikovich, Leonid, Sasha Blair-Goldensohn, Kerry Hannan, and Ryan McDonald, 2010): }}  
+\text{} \\
+The authors describe a method for creating a lexicon from web-scale data using an unsupervised graph-based algorithm. They create a phrase graph from many web pages by calculating the context vectors for many phrases up to length 10, and creating edges between phrases using cosine similarity between the vectors.  Then they use a graph propagation technique using a small set of positive and negative seed words, and attempt to find the maximal edge path between words/phrases in the graph. They compared their created lexicon with other lexicons and tested using two different metrics: one using a voting measure and another one computing a normalized polarity weight.  They trained two classifiers: a lexicon-only and contextual classifier.  What I liked about this paper and approach is the fact that it is unsupervised and could easily be used for domain adaptation.  One thing I didn't like about the paper was the limited discussion of the parameters used for the supervised classifier and how these parameters were selected.
+
+\paragraph{{\bf [SL3] (Yoonjung Choi and Janyce Wiebe, 2014):} } 
+\text{} \\
+The authors describe a technique for creating a lexicon of word senses that have a positive or negative effect on entities. They annotated a corpus of Word Net senses with +/- effect and They tested out several supervised and unsupervised methods. What I liked about the paper was that it was an attempt to represent some of the latent semantic meaning in a sentence that affects the polarity.  Instead of considering that individual words contribute independent sentiment, this paper looks at the influence that words have on other words.  I didn't like that the paper included so many different techniques and I thought they might be better served in other papers.
+
+\end{document}
